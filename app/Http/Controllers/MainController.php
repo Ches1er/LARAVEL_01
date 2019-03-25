@@ -11,7 +11,8 @@ class MainController extends Controller
     }
     public function actionAbout(Request $request){
         return view("about",[
-            "author"=>$request->get("author","I`am")
+            "author"=>$request->get("author","I`am"),
+            "authors"=>["vasia","trulala"]
         ]);
     }
     public function actionProfile($name){
