@@ -17,5 +17,8 @@ Route::get('/', "MainController@actionIndex")->name("main");
 Route::get('/about', "MainController@actionAbout")->name("about");
 Route::get('/profile/{name}', "MainController@actionProfile")->name("profile");
 
+Route::post("/addpost","MainController@actionAddPost")->name("addpost");
+Route::delete("/delpost/{postid}","MainController@actionDelPost")->name("delpost");
+
 
 
