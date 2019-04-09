@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
@@ -15,6 +16,7 @@ class MainController extends Controller
             $users_posts = DB::table('posts')
                 ->join("users","users.id","=","posts.user_id")
                 ->select("posts.name","posts.content","users.name")->get();
+
         return view("main",["posts"=>$posts,"post_exist"=>$users_posts]);
     }
     public function actionAbout(Request $request){
@@ -64,6 +66,10 @@ class MainController extends Controller
         //Method 2
         DB::table("posts")->delete($postid);
         return redirect()->route("main");
+    }
+
+    public function actionAdmin(){
+        return view("admin");
     }
 }
 

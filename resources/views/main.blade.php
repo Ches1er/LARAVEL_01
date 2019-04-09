@@ -17,8 +17,6 @@
     <li>Empty</li>
     @endif
     </ul>
-    @dd($post_exist)
-
     <form action="/addpost" method="post">
         @csrf
         <label for="name">Name</label>
