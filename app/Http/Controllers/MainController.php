@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
 {
@@ -70,6 +72,15 @@ class MainController extends Controller
 
     public function actionAdmin(){
         return view("admin");
+    }
+    public function actionMail(){
+
+        $user = ['name'=>'Ivan','token'=>'12345'];
+
+        config(['mail.username' => 'myblogtestemail@gmail.com']);
+        config(['mail.password' => 'testemail']);
+
+        Mail::to('shop@ukrpolystroy.com.ua')->send((new OrderShipped($user)));
     }
 }
 
